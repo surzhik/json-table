@@ -12,35 +12,37 @@ function Pagination({ page, pages, onChange }) {
     pagesArray[i] = startPage + i + 1;
   }
   return (
-    <div className={s.paginationHolder}>
-      <ul>
-        <li className={s.pageLeft}>
-          <button disabled={page === 0} onClick={() => onChange(page - 1)}>
-            ←
-          </button>
-        </li>
-        {pagesArray[0] - 1 > 0 && <li>...</li>}
-        {pagesArray.map(pageToShow => (
-          <li key={`page_${pageToShow}`}>
-            <button
-              className={pageToShow === page + 1 ? s.active : null}
-              onClick={() => onChange(pageToShow - 1)}
-            >
-              {pageToShow}
+    pages > 1 && (
+      <div className={s.paginationHolder}>
+        <ul>
+          <li className={s.pageLeft}>
+            <button disabled={page === 0} onClick={() => onChange(page - 1)}>
+              ←
             </button>
           </li>
-        ))}
-        {pagesArray[pagesArray.length - 1] < pages && <li>...</li>}
-        <li className={s.pageRight}>
-          <button
-            disabled={page + 1 >= pages}
-            onClick={() => onChange(page + 1)}
-          >
-            →
-          </button>
-        </li>
-      </ul>
-    </div>
+          {pagesArray[0] - 1 > 0 && <li>...</li>}
+          {pagesArray.map(pageToShow => (
+            <li key={`page_${pageToShow}`}>
+              <button
+                className={pageToShow === page + 1 ? s.active : null}
+                onClick={() => onChange(pageToShow - 1)}
+              >
+                {pageToShow}
+              </button>
+            </li>
+          ))}
+          {pagesArray[pagesArray.length - 1] < pages && <li>...</li>}
+          <li className={s.pageRight}>
+            <button
+              disabled={page + 1 >= pages}
+              onClick={() => onChange(page + 1)}
+            >
+              →
+            </button>
+          </li>
+        </ul>
+      </div>
+    )
   );
 }
 
