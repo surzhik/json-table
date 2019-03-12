@@ -1,0 +1,41 @@
+.paginationHolder {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.paginationHolder ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.paginationHolder ul li {
+  display: inline-block;
+}
+
+.paginationHolder ul li.pageLeft {
+  margin-right: 5px;
+}
+
+.paginationHolder ul li.pageRight {
+  margin-left: 5px;
+}
+
+.paginationHolder ul button {
+  display: block;
+  padding: 5px 10px;
+  background: none;
+  border: none;
+}
+
+.paginationHolder ul button:hover {
+  color: #666;
+}
+
+.paginationHolder ul button[disabled] {
+  color: #999;
+}
+
+.paginationHolder ul button.active {
+  color: darkorange;
+}

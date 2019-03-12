@@ -1,0 +1,35 @@
+.tableHolder {
+  margin-top: 30px;
+}
+
+.tableOver {
+  display: block;
+}
+
+
+.tableOver .columnTitle {
+  cursor: pointer;
+}
+
+.buttonHolder {
+  margin-bottom: 15px;
+}
+
+.isHidden {
+  display: none;
+}
+
+.sortOrder {
+  border: solid black;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 2px;
+  margin: 10px;
+  vertical-align: middle;
+  transform: rotate(-135deg);
+}
+
+.sortOrder.Down {
+  transform: rotate(45deg);
+}
+

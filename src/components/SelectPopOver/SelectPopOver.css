@@ -1,0 +1,44 @@
+.popOverHolder {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 24px;
+  height: 24px;
+  float: right;
+}
+
+.toggleFilter {
+  background: #fff url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBvbHlnb24gcG9pbnRzPSIyMiAzIDIgMyAxMCAxMi40NiAxMCAxOSAxNCAyMSAxNCAxMi40NiAyMiAzIi8+PC9zdmc+') no-repeat center;
+  background-size: contain;
+  border: none;
+  outline: none;
+  display: block;
+  width: 22px;
+  height: 22px;
+}
+
+.listHolder {
+  position: absolute;
+  display: none;
+  width: 300px;
+  top: 100%;
+  padding: 15px;
+  left: -140px;
+  background: #fff;
+  border-radius: 3px;
+  border: 1px solid #f8f8f8;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.popOverHolder.opened .listHolder {
+  display: block;
+}
+
+.popOverHolder ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+
+
+}
