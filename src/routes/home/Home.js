@@ -18,7 +18,6 @@ export class Home extends React.Component {
 
   static propTypes = {
     jsonFiles: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired,
   };
 
   static defaultProps = {};
@@ -44,11 +43,12 @@ export class Home extends React.Component {
         <div className="container-fluid">
           {jsonFiles && jsonFiles.length > 0 ? (
             <div className="form-group">
+              {/* eslint-disable jsx-a11y/label-has-for */}
               <label htmlFor="jsonSelect">JSON file to display:</label>
               <form autoComplete="off">
                 <select
-                  className="form-control"
                   id="jsonSelect"
+                  className="form-control"
                   onChange={this.handleChangeSelect}
                 >
                   <option value="-1">Please, select</option>
@@ -68,6 +68,7 @@ export class Home extends React.Component {
           {jsonFile && (
             <Table
               jsonFile={jsonFile}
+              perPage={10}
               formatMoney={['armor_costs', 'logistic_costs']} // format cells for money
               formatBoolean={['battle_won']} // format cells for Yes/No
               filterColumn={['location']}

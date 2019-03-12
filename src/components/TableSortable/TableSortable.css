@@ -26,10 +26,16 @@
   padding: 2px;
   margin: 10px;
   vertical-align: middle;
+  opacity: 0;
+}
+
+.sortOrder.Up {
+  opacity: 1;
   transform: rotate(-135deg);
 }
 
 .sortOrder.Down {
+  opacity: 1;
   transform: rotate(45deg);
 }
 

@@ -53,7 +53,11 @@ module.exports = {
   // A map from regular expressions to module names that allow to stub out resources,
   // like images or styles with a single module.
   moduleNameMapper: {
-    '\\.(css|less|styl|scss|sass|sss)$': 'identity-obj-proxy',
+    '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
+      '<rootDir>/tools/mocks//fileMock.js',
+    '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    'isomorphic-style-loader/lib/withStyles':
+      '<rootDir>/tools/mocks/withStyles.js',
   },
 
   // modulePathIgnorePatterns: // [array<string>]

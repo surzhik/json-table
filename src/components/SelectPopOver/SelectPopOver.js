@@ -9,6 +9,7 @@ class SelectPopOver extends React.Component {
     items: PropTypes.array.isRequired,
     targetName: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
+    gotFilter: PropTypes.bool.isRequired,
   };
 
   state = {
@@ -25,6 +26,9 @@ class SelectPopOver extends React.Component {
 
   popOverRef = React.createRef();
 
+  /** Looking into click target and hide popOver if it was out container
+   * setting new isOpened{Bool} into state
+   */
   handleBlur = event => {
     if (
       !this.popOverRef ||
@@ -50,7 +54,7 @@ class SelectPopOver extends React.Component {
   };
 
   render() {
-    const { items } = this.props;
+    const { items, gotFilter } = this.props;
     const { isOpened } = this.state;
     return (
       <div
@@ -62,16 +66,23 @@ class SelectPopOver extends React.Component {
           <ul>
             {items.map(item => (
               <li key={item}>
-                <a href="#" onClick={event => this.applyFilter(event, item)}>
+                <button
+                  className="btn btn-link"
+                  onClick={event => this.applyFilter(event, item)}
+                >
                   {item}
-                </a>
+                </button>
               </li>
             ))}
             <li>
-              <hr />
-              <a href="#" onClick={event => this.applyFilter(event, null)}>
-                Clear Filter
-              </a>
+              {gotFilter && (
+                <button
+                  className="btn small btn-secondary"
+                  onClick={event => this.applyFilter(event, null)}
+                >
+                  Clear Filter
+                </button>
+              )}
             </li>
           </ul>
         </div>

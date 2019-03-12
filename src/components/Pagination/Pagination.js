@@ -4,6 +4,7 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Pagination.css';
 
 function Pagination({ page, pages, onChange }) {
+  // Counting start page link. We want to show max 10 links
   const startPage = Math.floor(page / 10) * 10;
   const pagesArray = new Array(Math.min(pages - startPage, 10));
   /* eslint-disable no-plusplus */
@@ -18,6 +19,7 @@ function Pagination({ page, pages, onChange }) {
             ←
           </button>
         </li>
+        {pagesArray[0] - 1 > 0 && <li>...</li>}
         {pagesArray.map(pageToShow => (
           <li key={`page_${pageToShow}`}>
             <button
@@ -28,6 +30,7 @@ function Pagination({ page, pages, onChange }) {
             </button>
           </li>
         ))}
+        {pagesArray[pagesArray.length - 1] < pages && <li>...</li>}
         <li className={s.pageRight}>
           <button
             disabled={page + 1 >= pages}

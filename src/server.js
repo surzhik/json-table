@@ -1,6 +1,7 @@
 import path from 'path';
-import fs from 'fs';
 import express from 'express';
+import glob from 'glob';
+import jsonfile from 'jsonfile';
 import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import nodeFetch from 'node-fetch';
@@ -13,8 +14,6 @@ import { ErrorPageWithoutStyle } from './routes/error/ErrorPage';
 import errorPageStyle from './routes/error/ErrorPage.css';
 import createFetch from './createFetch';
 import router from './router';
-import glob from 'glob';
-import jsonfile from 'jsonfile';
 
 // import assets from './asset-manifest.json'; // eslint-disable-line import/no-unresolved
 import chunks from './chunk-manifest.json'; // eslint-disable-line import/no-unresolved

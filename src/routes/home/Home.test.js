@@ -5,29 +5,20 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Loader from '../../components/Loader';
-import { Home } from './Search';
+import { Home } from './Home';
 
 configure({ adapter: new Adapter() });
 
-describe('Search container', () => {
-  const searchMovies = jest.fn();
+describe('Table container', () => {
   const props = {
-    loading: false,
-    suggestions: [],
-    actions: {
-      searchMovies,
-    },
+    jsonFiles: [{ name: 'report_100.json' }],
   };
 
   const state = {
-    suggestions: [], // list of suggestions
-    searchText: '',
-    showSuggest: false,
-    fetching: false,
+    jsonFile: null,
   };
 
-  describe('Search structure', () => {
+  describe('Home load', () => {
     test('renders children correctly', () => {
       const wrapper = renderer.create(<Home {...props} />).toJSON();
       expect(wrapper).toMatchSnapshot();
@@ -36,8 +27,8 @@ describe('Search container', () => {
 
   describe('Header initial', () => {
     const headerContainer = shallow(<Home {...props} />);
-    it('Render input', () => {
-      expect(headerContainer.find('input')).toHaveLength(1);
+    it('Render select', () => {
+      expect(headerContainer.find('#jsonSelect')).toHaveLength(1);
     });
   });
 
@@ -53,23 +44,17 @@ describe('Search container', () => {
     jest.useFakeTimers();
     const headerContainer = shallow(<Home {...props} />);
 
-    const searchText = 'Some text';
+    const selectedValue = 0;
     beforeEach(() => {
-      headerContainer.find('#searchInput').simulate('change', {
-        currentTarget: {
-          value: searchText,
+      headerContainer.find('select').simulate('change', {
+        target: {
+          value: selectedValue,
         },
       });
     });
 
-    it('updates searchText field in state', () => {
-      expect(headerContainer.state().searchText).toEqual(searchText);
-    });
-
-    it('Action calling', () => {
-      setTimeout(() => {
-        expect(searchMovies).toHaveBeenCalledTimes(1);
-      }, 1500);
+    it('Updates jsonFile field in state', () => {
+      expect(headerContainer.state().jsonFile).not.toBeNull();
     });
   });
   jest.runAllTimers();

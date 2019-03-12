@@ -13,7 +13,6 @@ const SRC_DIR = resolvePath('src');
 const BUILD_DIR = resolvePath('build');
 
 const isDebug = !process.argv.includes('--release');
-console.log('isDebug', isDebug);
 const isVerbose = process.argv.includes('--verbose');
 const isAnalyze =
   process.argv.includes('--analyze') || process.argv.includes('--analyse');
@@ -42,7 +41,7 @@ const config = {
 
   output: {
     path: resolvePath(BUILD_DIR, 'public/assets'),
-    publicPath: isDebug ? '/assets/' : '/searchField/assets/',
+    publicPath: isDebug ? '/assets/' : '/json-table/assets/',
     pathinfo: isVerbose,
     filename: isDebug ? '[name].js' : '[name].[chunkhash:8].js',
     chunkFilename: isDebug
@@ -411,21 +410,20 @@ const serverConfig = {
           ...rule,
           options: {
             ...rule.options,
-            presets: rule.options.presets.map(
-              preset =>
-                preset[0] !== '@babel/preset-env'
-                  ? preset
-                  : [
-                      '@babel/preset-env',
-                      {
-                        targets: {
-                          node: pkg.engines.node.match(/(\d+\.?)+/)[0],
-                        },
-                        modules: false,
-                        useBuiltIns: false,
-                        debug: false,
+            presets: rule.options.presets.map(preset =>
+              preset[0] !== '@babel/preset-env'
+                ? preset
+                : [
+                    '@babel/preset-env',
+                    {
+                      targets: {
+                        node: pkg.engines.node.match(/(\d+\.?)+/)[0],
                       },
-                    ],
+                      modules: false,
+                      useBuiltIns: false,
+                      debug: false,
+                    },
+                  ],
             ),
           },
         };
